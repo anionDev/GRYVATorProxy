@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   MoneroNode:
-    image: 'GRYVATor:latest'
+    image: 'GRYVATorProxy:latest'
     container_name: 'Tor'
 #     ports:
 #       - 8123:8123
