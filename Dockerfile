@@ -23,4 +23,3 @@ RUN /Workspace/ScriptCollection/Other/ServerMaintenance/Anonymous/TorInstall.sh
 
 RUN rm -rf /Workspace/ScriptCollection
 ENTRYPOINT ["tor"]
-#TODO outsource this to gryva

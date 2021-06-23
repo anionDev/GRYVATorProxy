@@ -1,11 +1,13 @@
 version: '3.2'
 services:
-  MoneroNode:
-    image: 'GRYVATorProxy:latest'
-    container_name: 'Tor'
-#     ports:
-#       - 8123:8123
-#     volumes:
-#       - ./Volumes/Configuration:/DirectoryInContainer/Configuration
-#       - ./Volumes/Data:/DirectoryInContainer/Data
-#       - ./Volumes/Logs:/DirectoryInContainer/Logs
+  r3torproxy:
+    image: GRYVATorify:latest
+    container_name: 'r3torproxy'
+#   environment:
+#     - variable=value
+#   ports:
+#     - 443:443
+    volumes:
+      - ./Volumes/Configuration/etctor:/etc/tor
+# For First usage: Disable the ./Volumes/Configuration/etctor-volume and execute "docker cp r3torproxy:/etc/tor ./Volumes/Configuration/etctor"
+#     - ./../Logs/Application:/DirectoryInContainer/Logs
