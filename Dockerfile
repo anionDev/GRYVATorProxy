@@ -13,6 +13,10 @@ RUN rm -rf /Workspace/ScriptCollection
 FROM debian:stable-slim
 RUN apt-get -y update -qq
 RUN apt-get -y install git
+#temp:
+RUN apt-get -y install net-tools
+RUN apt-get -y install iputils-ping
+
 RUN mkdir /Workspace
 WORKDIR /Workspace
 
