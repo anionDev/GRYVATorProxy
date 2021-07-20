@@ -1,3 +1,5 @@
 # GRYVATorProxy
 
-The purpose of this image is to provide an image which can be used as proxy to "torify" network-traffic.
+# Purpose
+
+GRYVATorProxy is a docker-image for simply running a tor-proxy in a docker-container.
