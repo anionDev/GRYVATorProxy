@@ -1,14 +1,11 @@
 version: '3.2'
 services:
-  r3torproxy:
-    image: GRYVATorify:latest
-    container_name: 'r3torproxy'
-#   environment:
-#     - variable=value
-#   ports:
-#     - 443:443
+  gryvatorproxy:
+    image: gryvatorproxy:latest
+    container_name: 'gryvatorproxy'
     volumes:
-      - ./Volumes/Configuration/etc_tor:/etc/tor
-      - ./Volumes/Configuration/var_lib_tor:/var/lib/tor
+      - ./Test/etc_tor:/userhome/etc_tor
+      - ./Test/var_lib/tor:/userhome/var_lib_tor
+      - ./Test/Logs:/userhome/var_log_tor
 # For First usage: Disable the ./Volumes/Configuration/etc_tor-volume and execute "docker cp r3torproxy:/etc/tor ./Volumes/Configuration/etc_tor"
 #     - ./../Logs/Application:/DirectoryInContainer/Logs
