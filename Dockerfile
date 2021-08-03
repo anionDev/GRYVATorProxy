@@ -19,6 +19,7 @@ RUN chmod +x /userhome/EntryPointScript.sh
 
 RUN mkdir -p /userhome
 RUN chown -R user:1000 /userhome
+RUN chown -R user:1000 /var/lib/tor
 
 RUN ./ScriptCollection/Other/ServerMaintenance/Alpine/Common/ConfigureSystem.sh "$EnvironmentStage" "/Workspace/ScriptCollection" "" "/Workspace"
 
