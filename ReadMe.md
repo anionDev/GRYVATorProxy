@@ -6,6 +6,9 @@ GRYVATorProxy is a docker-image for simply running a tor-proxy in a docker-conta
 
 ## Usage
 
+When you first simply run the image using the `docker-compose.example.yml`-file then the required `torrc`-file will not be found but it generates the file `./Test/etc_tor/tor/torrc.sample` for you.
+Renaming this file to `./Test/etc_tor/tor/torrc` will make this image workable. Of course you can also directly provide a `torrc`-file without creating a `torrc.sample`.
+
 ### Volumes
 
 Using volumes is not required. There are 2 optional volumes:
