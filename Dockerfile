@@ -7,7 +7,7 @@ WORKDIR /Workspace
 
 RUN apk --no-cache add --update git bash
 
-RUN git clone --single-branch --branch development git://github.com/anionDev/ScriptCollection.git
+RUN git clone --single-branch --branch master git://github.com/anionDev/ScriptCollection.git
 RUN chmod -R +x ./ScriptCollection/Other
 
 RUN ./ScriptCollection/Other/ServerMaintenance/Alpine/Anonymous/TorInstall.sh

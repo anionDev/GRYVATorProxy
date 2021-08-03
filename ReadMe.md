@@ -26,7 +26,7 @@ See `docker-compose.example.yml` for an example how to use it.
 The image can be built using the following command:
 
 ``` sh
-docker image build --no-cache --pull --force-rm --progress plain --build-arg EnvironmentStage=Development --tag latest .
+docker image build --no-cache --pull --force-rm --progress plain --build-arg EnvironmentStage=Development --tag gryvatorproxy:latest .
 ```
 
 ## Test
