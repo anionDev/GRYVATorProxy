@@ -7,10 +7,11 @@ fi
 if [ ! -f ./etc_tor/tor/torrc ]; then
     echo "torrc-file not found."
 else
-   echo "--------------------"
-   echo "Tor-Configuration:"
-   cat ./etc_tor/tor/torrc
-   echo "--------------------"
-
-   tor -f ./etc_tor/tor/torrc
+    echo "--------------------"
+    echo "Tor-Configuration:"
+    cat ./etc_tor/tor/torrc
+    echo "--------------------"
+    tor --version
+    echo "--------------------"
+    tor -f ./etc_tor/tor/torrc
 fi

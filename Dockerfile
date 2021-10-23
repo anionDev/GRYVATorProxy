@@ -23,6 +23,8 @@ RUN chown -R user:1000 /var/lib/tor
 
 RUN ./ScriptCollection/Other/ServerMaintenance/Alpine/Common/ConfigureSystem.sh "$EnvironmentStage" "/Workspace/ScriptCollection" "" "/Workspace"
 
+RUN tor --version
+
 USER user
 WORKDIR /userhome
 
