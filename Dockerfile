@@ -1,31 +1,31 @@
-FROM alpine:latest
+FROM debian:stable-slim
 
 ARG EnvironmentStage
 
 RUN mkdir /Workspace
 WORKDIR /Workspace
 
-RUN apk --no-cache add --update git bash
+RUN apt update
+RUN apt install -y git
 
 RUN git clone --single-branch --branch main git://github.com/anionDev/ScriptCollection.git
 RUN chmod -R +x ./ScriptCollection/Other
 
-RUN ./ScriptCollection/Other/ServerMaintenance/Alpine/Anonymous/TorInstall.sh
+RUN ./ScriptCollection/Other/ServerMaintenance/Debian/Anonymous/TorInstall.sh
 
-RUN ./ScriptCollection/Other/ServerMaintenance/Alpine/Common/CreateUser.sh "user" "/userhome" "false" "" "false" "false"
+RUN ./ScriptCollection/Other/ServerMaintenance/Debian/Common/CreateUser.sh "user" "/Workspace/userhome" "false" "" "false" "false"
 
-COPY Utilities/EntryPointScript.sh /userhome/EntryPointScript.sh
-RUN chmod +x /userhome/EntryPointScript.sh
 
-RUN mkdir -p /userhome
-RUN chown -R user:1000 /userhome
+COPY ./EntryPointScript.sh /Workspace/userhome/EntryPointScript.sh
+RUN chmod +x /Workspace/userhome/EntryPointScript.sh
+
+RUN chown -R user:1000 /Workspace/userhome
 RUN chown -R user:1000 /var/lib/tor
 
-RUN ./ScriptCollection/Other/ServerMaintenance/Alpine/Common/ConfigureSystem.sh "$EnvironmentStage" "/Workspace/ScriptCollection" "" "/Workspace"
+RUN /Workspace/ScriptCollection/Other/ServerMaintenance/Debian/Common/ConfigureSystem.sh "$EnvironmentStage" "/Workspace/ScriptCollection" "" "/Workspace/ScriptCollection"
 
 RUN tor --version
 
 USER user
-WORKDIR /userhome
 
-ENTRYPOINT ["/userhome/EntryPointScript.sh"]
+ENTRYPOINT ["/Workspace/userhome/EntryPointScript.sh"]

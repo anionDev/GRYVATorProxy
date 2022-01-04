@@ -2,8 +2,8 @@ version: '3.2'
 services:
   gryvatorproxy:
     image: gryvatorproxy:latest
-    container_name: 'gryvatorproxy'
+    container_name: 'GRYVATorProxy'
     volumes:
-      - ./Test/etc_tor:/userhome/etc_tor
-      - ./Test/var_lib/tor:/userhome/var_lib_tor
-      - ./Test/Logs:/var/log/tor
+      - ./Volumes/etc_tor:/Workspace/userhome/etc_tor
+      - ./Volumes/var_lib/tor:/Workspace/userhome/var_lib_tor
+      - ./Volumes/Logs:/var/log/tor
