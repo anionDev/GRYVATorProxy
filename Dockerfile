@@ -15,7 +15,6 @@ RUN ./ScriptCollection/Other/ServerMaintenance/Debian/Anonymous/TorInstall.sh
 
 RUN ./ScriptCollection/Other/ServerMaintenance/Debian/Common/CreateUser.sh "user" "/Workspace/userhome" "false" "" "false" "false"
 
-
 COPY ./EntryPointScript.sh /Workspace/userhome/EntryPointScript.sh
 RUN chmod +x /Workspace/userhome/EntryPointScript.sh
 
