@@ -54,8 +54,8 @@ The built image can be tested using the following command:
 docker-compose -f docker-compose.example.yml -p GRYVATorProxy up --remove-orphans --force-recreate
 ```
 
-When you first simply run the image using the `docker-compose.example.yml`-file then the required `torrc`-file will not be found but it generates the file `./Test/etc_tor/tor/torrc.sample` for you.
-Renaming this file to `./Test/etc_tor/tor/torrc` will make this image workable. Of course you can also directly provide a `torrc`-file without creating a `torrc.sample`.
+Tor must find the file `/Workspace/userhome/etc_tor/tor/torrc` inside the container to run correctly.
+When the folder `/Workspace/userhome/etc_tor` does not exist inside the container (e. g. on the first run) then it will be generated with default-content which then can be edited due to your requirements.
 
 ## Development
 
