@@ -8,7 +8,7 @@ WORKDIR /Workspace
 RUN apt update
 RUN apt install -y git
 
-RUN git clone --single-branch --branch main git://github.com/anionDev/ScriptCollection.git
+RUN git clone --single-branch --branch main https://github.com/anionDev/ScriptCollection.git
 RUN chmod -R +x ./ScriptCollection/Other
 
 RUN ./ScriptCollection/Other/ServerMaintenance/Debian/Anonymous/TorInstall.sh
