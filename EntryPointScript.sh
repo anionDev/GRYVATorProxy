@@ -9,6 +9,7 @@ if [ -z "$(ls -A ./userhome/etc_tor)" ]; then
 fi
 
 if [ ! -f ./userhome/etc_tor/tor/torrc ]; then
+    echo "--------------------"
     echo "torrc-file not found."
     exit 1
 else
@@ -16,5 +17,6 @@ else
     echo "Tor-Configuration:"
     cat ./userhome/etc_tor/tor/torrc
     echo "--------------------"
+    echo "Start tor"
     tor -f ./userhome/etc_tor/tor/torrc
 fi

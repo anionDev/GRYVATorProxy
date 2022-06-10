@@ -5,5 +5,5 @@ services:
     container_name: 'GRYVATorProxy'
     volumes:
       - ./Volumes/etc_tor:/Workspace/userhome/etc_tor
-      - ./Volumes/var_lib/tor:/Workspace/userhome/var_lib_tor
+      - ./Volumes/var_lib_tor:/Workspace/userhome/var_lib_tor
       - ./Volumes/Logs:/var/log/tor

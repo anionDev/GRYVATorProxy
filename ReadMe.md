@@ -16,7 +16,7 @@ Using volumes is recommended to persist and preserve data. The available folders
 
 - `/Workspace/userhome/etc_tor`
 - `/Workspace/userhome/var_lib_tor`
-- `/Workspace/var/log/tor`
+- `/var/log/tor`
 
 ### Environment-variables
 
