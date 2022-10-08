@@ -1,6 +1,12 @@
 FROM debian:stable-slim as base
 
 ARG EnvironmentStage
+ARG Version
+
+LABEL version="$Version"
+LABEL description="Represents a Tor-Proxy."
+
+RUN echo "Build image v$Version"
 
 RUN mkdir /Workspace
 WORKDIR /Workspace

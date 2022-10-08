@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Represents a [Tor](https://www.torproject.org/)-Node.
+Represents a [Tor](https://www.torproject.org/)-Proxy.
 
 ## Version
 
