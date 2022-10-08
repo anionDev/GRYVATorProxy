@@ -10,31 +10,41 @@
 			{
 				"label": "GRYVATorProxy: Common tasks",
 				"command": "python",
-				"args": ["${workspaceFolder}/GRYVATorProxy/Other/CommonTasks.py"],
+				"args": [
+					"${workspaceFolder}/GRYVATorProxy/Other/CommonTasks.py"
+				],
 				"type": "shell",
 			},
 			{
 				"label": "GRYVATorProxy: Run testcases",
 				"command": "python",
-				"args": ["${workspaceFolder}/GRYVATorProxy/Other/QualityCheck/RunTestcases.py"],
+				"args": [
+					"${workspaceFolder}/GRYVATorProxy/Other/QualityCheck/RunTestcases.py"
+				],
 				"type": "shell",
 			},
 			{
 				"label": "GRYVATorProxy: Linting",
 				"command": "python",
-				"args": ["${workspaceFolder}/GRYVATorProxy/Other/QualityCheck/Linting.py"],
+				"args": [
+					"${workspaceFolder}/GRYVATorProxy/Other/QualityCheck/Linting.py"
+				],
 				"type": "shell",
 			},
 			{
 				"label": "GRYVATorProxy: Generate reference",
 				"command": "python",
-				"args": ["${workspaceFolder}/GRYVATorProxy/Other/Reference/GenerateReference.py"],
+				"args": [
+					"${workspaceFolder}/GRYVATorProxy/Other/Reference/GenerateReference.py"
+				],
 				"type": "shell",
 			},
 			{
 				"label": "GRYVATorProxy: Build",
 				"command": "python",
-				"args": ["${workspaceFolder}/GRYVATorProxy/Other/Build/Build.py"],
+				"args": [
+					"${workspaceFolder}/GRYVATorProxy/Other/Build/Build.py"
+				],
 				"type": "shell",
 			}
 		]
@@ -43,8 +53,7 @@
 		"files.associations": {
 			"*.codeunit": "xml",
 		},
-		"files.exclude": {
-		},
+		"files.exclude": {},
 		"spellright.language": [
 			"en",
 		],
@@ -52,5 +61,16 @@
 			"markdown",
 			"plaintext",
 		],
+	},
+	"launch": {
+		"configurations": [
+			{
+				"name": "All: Debug current file",
+				"type": "python",
+				"request": "launch",
+				"program": "${file}",
+				"console": "integratedTerminal"
+			},
+		]
 	}
 }

@@ -6,7 +6,7 @@ Represents a [Tor](https://www.torproject.org/)-Proxy.
 
 ## Version
 
-The Tor-version in the latest image is v0.4.6.9.
+The Tor-version in the latest image is v0.4.7.10.
 
 ## Usage
 
