@@ -1,6 +1,6 @@
 FROM debian:stable-slim as base
 
-ARG EnvironmentStage
+ARG EnvironmentStage="QualityCheck"
 ARG Version="0.1.0"
 
 LABEL version="$Version"
@@ -28,6 +28,7 @@ RUN chown -R user:1000 /Workspace/userhome
 RUN chown -R user:1000 /var/lib/tor
 
 RUN /Workspace/ScriptCollection/OtherScripts/ServerMaintenance/Debian/Common/ConfigureSystem.sh "$EnvironmentStage" "/Workspace/ScriptCollection" "" "/Workspace/ScriptCollection"
+WORKDIR /Workspace
 
 RUN tor --version
 

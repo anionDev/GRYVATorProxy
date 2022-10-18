@@ -60,7 +60,10 @@
 				"command": "docker-compose",
 				"args": [
 					"${workspaceFolder}/GRYVATorProxy/Other/Reference/ReferenceContent/Examples",
-					"up"
+					"--file",
+					"docker-compose.example.yml",
+					"up",
+					"--build"
 				],
 				"type": "shell",
 			}
