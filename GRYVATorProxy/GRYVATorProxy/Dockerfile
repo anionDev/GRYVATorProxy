@@ -28,12 +28,12 @@ RUN chown -R user:1000 /Workspace/userhome
 RUN chown -R user:1000 /var/lib/tor
 
 RUN /Workspace/ScriptCollection/OtherScripts/ServerMaintenance/Debian/Common/ConfigureSystem.sh "$EnvironmentStage" "/Workspace/ScriptCollection" "" "/Workspace/ScriptCollection"
-WORKDIR /Workspace
 
 RUN tor --version
 
 FROM scratch
 ARG EnvironmentStage
 COPY --from=base / /
+WORKDIR /Workspace
 USER user
 ENTRYPOINT ["/Workspace/userhome/EntryPointScript.sh"]
