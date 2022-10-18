@@ -1,18 +1,23 @@
 import sys
 import os
 from pathlib import Path
-from ScriptCollection.ScriptCollectionCore import ScriptCollectionCore
 from ScriptCollection.GeneralUtilities import GeneralUtilities
+from ScriptCollection.ScriptCollectionCore import ScriptCollectionCore
 from ScriptCollection.TasksForCommonProjectStructure import TasksForCommonProjectStructure
+
+
+def replace_version_in_dockerfile_file(sc: ScriptCollectionCore, dockerfile: str, version: str) -> None:
+    pass  # TODO
 
 
 def common_tasks():
     file = str(Path(__file__).absolute())
     folder_of_current_file = os.path.dirname(file)
     sc = ScriptCollectionCore()
-    TasksForCommonProjectStructure().standardized_tasks_do_common_tasks(file, 1, "QualityCheck", sys.argv)
-    version = sc.getversion_from_arguments_or_gitversion(file, sys.argv)
-    sc.replace_version_in_csproj_file(GeneralUtilities.resolve_relative_path("../GRYVATorProxy/Dockerfile", folder_of_current_file), version)
+    version = sc.get_semver_version_from_gitversion(GeneralUtilities.resolve_relative_path("../..", os.path.dirname(file)))
+    replace_version_in_dockerfile_file(sc, GeneralUtilities.resolve_relative_path("../GRYVATorProxy/Dockerfile", folder_of_current_file), version)
+    tfcps = TasksForCommonProjectStructure()
+    tfcps.standardized_tasks_do_common_tasks(file, 1, "QualityCheck", True, sys.argv)
 
 
 if __name__ == "__main__":
