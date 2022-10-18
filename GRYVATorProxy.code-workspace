@@ -8,10 +8,27 @@
 		"version": "2.0.0",
 		"tasks": [
 			{
+				"label": "GRYVATorProxy: Build entire codeunit",
+				"command": "SCBuildCodeunit",
+				"args": [
+					"--codeunitfolder",
+					"${workspaceFolder}/GRYVATorProxy"
+				],
+				"type": "shell",
+			},
+			{
 				"label": "GRYVATorProxy: Common tasks",
 				"command": "python",
 				"args": [
 					"${workspaceFolder}/GRYVATorProxy/Other/CommonTasks.py"
+				],
+				"type": "shell",
+			},
+			{
+				"label": "GRYVATorProxy: Build",
+				"command": "python",
+				"args": [
+					"${workspaceFolder}/GRYVATorProxy/Other/Build/Build.py"
 				],
 				"type": "shell",
 			},
@@ -36,14 +53,6 @@
 				"command": "python",
 				"args": [
 					"${workspaceFolder}/GRYVATorProxy/Other/Reference/GenerateReference.py"
-				],
-				"type": "shell",
-			},
-			{
-				"label": "GRYVATorProxy: Build",
-				"command": "python",
-				"args": [
-					"${workspaceFolder}/GRYVATorProxy/Other/Build/Build.py"
 				],
 				"type": "shell",
 			}
