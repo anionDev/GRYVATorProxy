@@ -1,7 +1,7 @@
 FROM debian:stable-slim as base
 
 ARG EnvironmentStage="QualityCheck"
-ARG Version="0.1.0"
+ARG Version="0.1.8"
 
 LABEL version="$Version"
 LABEL description="Represents a Tor-Proxy."
