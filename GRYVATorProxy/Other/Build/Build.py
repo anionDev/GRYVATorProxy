@@ -7,9 +7,8 @@ from ScriptCollection.TasksForCommonProjectStructure import TasksForCommonProjec
 
 
 def standardized_tasks_build_for_docker_library_project_in_common_project_structure(self: TasksForCommonProjectStructure, build_script_file: str, build_configuration: str, verbosity: int, commandline_arguments: list[str]):
-    # TODO use verbosity-value
-    # TODO use sys_argv-value
-    use_cache: bool = False  # TODO make configurable
+    use_cache: bool = build_configuration == "QualityCheck"
+    verbosity = self.get_verbosity_from_commandline_arguments(commandline_arguments, verbosity)
     sc: ScriptCollectionCore = ScriptCollectionCore()
     codeunitname: str = Path(os.path.dirname(build_script_file)).parent.parent.name
     codeunit_folder = GeneralUtilities.resolve_relative_path(f"../..", str(os.path.dirname(build_script_file)))
@@ -22,12 +21,12 @@ def standardized_tasks_build_for_docker_library_project_in_common_project_struct
         args.append("--no-cache")
     args.append(".")
     codeunit_content_folder = os.path.join(codeunit_folder, codeunitname)
-    sc.run_program_argsasarray("docker", args, codeunit_content_folder)
+    sc.run_program_argsasarray("docker", args, codeunit_content_folder, verbosity=verbosity)
     artifacts_folder = GeneralUtilities.resolve_relative_path("Other/Artifacts", codeunit_folder)
     app_artifacts_folder = os.path.join(artifacts_folder, "ApplicationImage")
     GeneralUtilities.ensure_directory_does_not_exist(app_artifacts_folder)
     GeneralUtilities.ensure_directory_exists(app_artifacts_folder)
-    sc.run_program_argsasarray("docker", ["save", "--output", f"{codeunitname}_v{version}.tar", f"{codeunitname_lower}:{version}"], app_artifacts_folder)
+    sc.run_program_argsasarray("docker", ["save", "--output", f"{codeunitname}_v{version}.tar", f"{codeunitname_lower}:{version}"], app_artifacts_folder, verbosity=verbosity)
 
 
 def build():

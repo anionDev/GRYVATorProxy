@@ -1,13 +1,15 @@
 import sys
 import os
+import re
 from pathlib import Path
 from ScriptCollection.GeneralUtilities import GeneralUtilities
 from ScriptCollection.ScriptCollectionCore import ScriptCollectionCore
 from ScriptCollection.TasksForCommonProjectStructure import TasksForCommonProjectStructure
 
 
-def replace_version_in_dockerfile_file(sc: ScriptCollectionCore, dockerfile: str, version: str) -> None:
-    pass  # TODO
+def replace_version_in_dockerfile_file(self: ScriptCollectionCore, dockerfile: str, version: str) -> None:
+    GeneralUtilities.write_text_to_file(dockerfile, re.sub("ARG Version = \"\\d+\\.\\d+\\.\\d+\"", f"ARG Version = \"{version}\"",
+                                                           GeneralUtilities.read_text_from_file(dockerfile)))
 
 
 def common_tasks():
