@@ -11,7 +11,6 @@
 				"label": "GRYVATorProxy: Build entire codeunit",
 				"command": "SCBuildCodeunit",
 				"args": [
-					"--codeunitfolder",
 					"${workspaceFolder}/GRYVATorProxy"
 				],
 				"type": "shell",
@@ -53,6 +52,15 @@
 				"command": "python",
 				"args": [
 					"${workspaceFolder}/GRYVATorProxy/Other/Reference/GenerateReference.py"
+				],
+				"type": "shell",
+			},
+			{
+				"label": "GRYVATorProxy: Run example",
+				"command": "docker-compose",
+				"args": [
+					"${workspaceFolder}/GRYVATorProxy/Other/Reference/ReferenceContent/Examples",
+					"up"
 				],
 				"type": "shell",
 			}
