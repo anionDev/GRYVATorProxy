@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Represents a [Tor](https://www.torproject.org/)-Node.
+Represents a [Tor](https://www.torproject.org/)-Proxy.
 
 ## Version
 
-The Tor-version in the latest image is v0.4.6.9.
+The Tor-version in the latest image is v0.4.7.10.
 
 ## Usage
 
@@ -16,7 +16,7 @@ Using volumes is recommended to persist and preserve data. The available folders
 
 - `/Workspace/userhome/etc_tor`
 - `/Workspace/userhome/var_lib_tor`
-- `/Workspace/var/log/tor`
+- `/var/log/tor`
 
 ### Environment-variables
 

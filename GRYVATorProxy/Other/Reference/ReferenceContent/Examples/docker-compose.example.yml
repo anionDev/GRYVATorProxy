@@ -1,0 +1,11 @@
+version: '3.2'
+services:
+  gryvatorproxy:
+    build:
+      dockerfile: Dockerfile
+      context: ../../../../GRYVATorProxy
+    container_name: 'GRYVATorProxy'
+    volumes:
+      - ./Volumes/Configuration:/Workspace/userhome/etc_tor
+      - ./Volumes/State:/Workspace/userhome/var_lib_tor
+      - ./Volumes/Logs:/var/log/tor
