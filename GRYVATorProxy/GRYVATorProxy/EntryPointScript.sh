@@ -1,23 +1,28 @@
 #!/bin/bash
 
+configurationfile="/Workspace/Application/torrc"
+
+sed -i -e "s/__.torrc.hiddenservicedir.__/$hiddenservicedir/g" $configurationfile
+sed -i -e "s/__.torrc.hiddenserviceport.__/$hiddenserviceport/g" $configurationfile
+sed -i -e "s/__.torrc.hiddenserviceaddress.__/$hiddenserviceaddress/g" $configurationfile
+
+if [[ "${lognotice}" = true ]]; then
+  sed -i -e "s/__.torrc.lognotice.__/Log notice file \/var\/log\/tor\/notices.log/g" $configurationfile
+else
+  sed -i -e "s/__.torrc.lognotice.__//g" $configurationfile
+fi
+if [[ "${logdebug}" = true ]]; then
+  sed -i -e "s/__.torrc.logdebug.__/Log notice file \/var\/log\/tor\/debug.log/g" $configurationfile
+else
+  sed -i -e "s/__.torrc.logdebug.__//g" $configurationfile
+fi
+
 echo "--------------------"
 echo "Tor-version:"
 tor --version
-
-if [ -z "$(ls -A ./userhome/etc_tor)" ]; then
-    echo "Initialize for first usage..."
-   cp -r /etc/tor ./userhome/etc_tor
-fi
-
 echo "--------------------"
-if [ ! -f ./userhome/etc_tor/tor/torrc ]; then
-    echo "torrc-file not found."
-    echo "--------------------"
-    exit 1
-else
-    echo "Tor-Configuration:"
-    cat ./userhome/etc_tor/tor/torrc
-    echo "--------------------"
-    echo "Start tor"
-    tor -f ./userhome/etc_tor/tor/torrc
-fi
+echo "Tor-Configuration:"
+cat $configurationfile
+echo "--------------------"
+echo "Starting tor..."
+tor -f $configurationfile

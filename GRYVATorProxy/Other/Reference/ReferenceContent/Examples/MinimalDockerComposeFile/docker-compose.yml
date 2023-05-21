@@ -1,0 +1,20 @@
+version: '3.2'
+services:
+  webserver:
+    image: apache
+    ports:
+      - 80:80
+  gryvatorproxy:
+    image: gryvatorproxy:0.1.2
+    container_name: 'gryvatorproxy'
+    volumes:
+      - ./Volumes/Keys:/var/lib/tor/hiddenservicename
+      - ./Volumes/Logs:/var/log/tor
+    ports:
+      - 8080:8080
+    environment:
+      - hiddenservicedir=/var/lib/tor/hiddenservicename/
+      - hiddenserviceport=8080
+      - hiddenserviceaddress=localhost:80
+      - lognotice=true
+      - logdebug=false

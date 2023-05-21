@@ -2,9 +2,7 @@
 
 ## Purpose
 
-Represents a [Tor](https://www.torproject.org/)-Proxy.
-
-## Version
+[GRYVATorProxy](https://github.com/anionDev/GRYVATorProxy) is a docker-image for running a hidden service in a docker-container.
 
 The Tor-version in the latest image is v0.4.7.10.
 
@@ -12,53 +10,53 @@ The Tor-version in the latest image is v0.4.7.10.
 
 ### Volumes
 
-Using volumes is recommended to persist and preserve data. The available folders for shared volumes are:
+Using volumes is not required. There are 2 optional volumes:
 
-- `/Workspace/userhome/etc_tor`
-- `/Workspace/userhome/var_lib_tor`
 - `/var/log/tor`
+- `/var/lib/tor/<hiddenservicename>`
 
 ### Environment-variables
 
-There are currently no environment-variables available.
+The following environment-variables are supported:
+
+- `hiddenservicedir`
+- `hiddenserviceport`
+- `hiddenserviceaddress`
+- `lognotice`
+- `logdebug`
+
+All of these environment-variables are required.
 
 ### Example
 
-See `docker-compose.example.yml` for an example how to use it.
+See [`docker-compose.example.yml`](https://github.com/anionDev/GRYVATorProxy/blob/main/GRYVATorProxy/Other/Reference/ReferenceContent/Examples/MinimalDockerComposeFile/docker-compose.yml) for an example how to use this image.
 
-### Build image
+## Additional stuff
 
-The image can be built using the following command:
-
-``` sh
-docker image build --force-rm --progress plain --build-arg EnvironmentStage=Development --tag gryvatorproxy:latest .
-```
-
-The image can also be built using the following command which uses no cache:
-
-``` sh
-docker image build --no-cache --pull --force-rm --progress plain --build-arg EnvironmentStage=Development --tag gryvatorproxy:latest .
-```
-
-The environment-stage can have the one of the following values:
-
-- `Development`
-- `QualityManagement`
-- `Productive`
-
-### Test image
-
-The built image can be tested using the following command:
-
-``` sh
-docker-compose -f docker-compose.example.yml -p GRYVATorProxy up --remove-orphans --force-recreate
-```
-
-Tor must find the file `/Workspace/userhome/etc_tor/tor/torrc` inside the container to run correctly.
-When the folder `/Workspace/userhome/etc_tor` does not exist inside the container (e. g. on the first run) then it will be generated with default-content which then can be edited due to your requirements.
+After running this container, take a look at the tasks listed at [community.torproject.org/relay/setup/post-install](https://community.torproject.org/relay/setup/post-install).
 
 ## Development
 
+### Development-state
+
+![Development-state](https://img.shields.io/badge/development--state-maintenance%20updates%20only-green)
+
 ### Branching-system
 
-This repository applies the [GitFlowSimplified](https://projects.aniondev.de/CommonUtilities/Templates/ProjectTemplates/-/blob/main/Templates/Conventions/BranchingSystem/GitFlowSimplified.md)-branching-system.
+This repository applies the [GitFlowSimplified](https://projects.aniondev.de/PublicProjects/Common/ProjectTemplates/-/blob/main/Conventions/BranchingSystem/GitFlowSimplified/GitFlowSimplified.md)-branching-system.
+
+### Image-properties
+
+The image-build-artifacts of this repository implement the [DefaultImageUsabilityRequirements](https://projects.aniondev.de/PublicProjects/Common/ProjectTemplates/-/blob/main/Conventions/ImageProperties/DefaultImageUsabilityRequirements/DefaultImageUsabilityRequirements.md)-branching-system.
+
+### Project-Structure
+
+This repository applies the [CommonProjectStructure](https://projects.aniondev.de/PublicProjects/Common/ProjectTemplates/-/blob/main/Conventions/RepositoryStructure/CommonProjectStructure/CommonProjectStructure.md)-project-structure.
+
+### Versioning-system
+
+This repository applies the [SemVerPractise](https://projects.aniondev.de/PublicProjects/Common/ProjectTemplates/-/blob/main/Conventions/Versioning/SemVerPractise/SemVerPractise.md)-versioning-system.
+
+## License
+
+See [License.txt](https://github.com/anionDev/GRYVATorProxy/blob/main/License.txt) for license-information.

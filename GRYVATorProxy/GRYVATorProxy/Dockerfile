@@ -1,39 +1,29 @@
-FROM debian:stable-slim as base
+FROM debian:stable-slim
 
-ARG EnvironmentStage="QualityCheck"
+ARG TargetEnvironmentType
 ARG Version="0.1.8"
 
+ARG TorKey=A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
+ARG TorURL=https://deb.torproject.org/torproject.org
+LABEL maintainer "marius.goecke@gmail.com"
+LABEL description="GRYVATorProxy is a docker-image for running a hidden service in a docker-container."
+LABEL targetEnvironmentType="$TargetEnvironmentType"
 LABEL version="$Version"
-LABEL description="Represents a Tor-Proxy."
 
-RUN echo "Build image v$Version"
+RUN apt-get -y update \
+    && apt-get -y install wget gpg lsb-release \
+    && mkdir /Workspace \
+    && mkdir /Workspace/Application \
+    && mkdir /Workspace/Data \
+    && echo "deb $TorURL $(lsb_release -cs) main" | tee -a /etc/apt/sources.list.d/tor.list \
+    && echo "deb-src $TorURL $(lsb_release -cs) main" | tee -a /etc/apt/sources.list.d/tor.list \
+    && wget -qO- $TorURL/$TorKey.asc | gpg --import \
+    && gpg --export $TorKey | apt-key add - \
+    && apt-get -y update \
+    && apt-get -y install tor deb.torproject.org-keyring \
+    && apt-get -y purge wget gpg lsb-release \
+    && apt-get clean
 
-RUN mkdir /Workspace
-WORKDIR /Workspace
+WORKDIR /Workspace/Data
 
-RUN apt update
-RUN apt install -y git
-
-RUN git clone --depth 1 --single-branch --branch main https://github.com/anionDev/ScriptCollection.git
-RUN chmod -R +x ./ScriptCollection/OtherScripts
-
-RUN ./ScriptCollection/OtherScripts/ServerMaintenance/Debian/Anonymous/TorInstall.sh
-
-RUN ./ScriptCollection/OtherScripts/ServerMaintenance/Debian/Common/CreateUser.sh "user" "/Workspace/userhome" "false" "" "false" "false"
-
-COPY ./EntryPointScript.sh /Workspace/userhome/EntryPointScript.sh
-RUN chmod +x /Workspace/userhome/EntryPointScript.sh
-
-RUN chown -R user:1000 /Workspace/userhome
-RUN chown -R user:1000 /var/lib/tor
-
-RUN /Workspace/ScriptCollection/OtherScripts/ServerMaintenance/Debian/Common/ConfigureSystem.sh "$EnvironmentStage" "/Workspace/ScriptCollection" "" "/Workspace/ScriptCollection"
-
-RUN tor --version
-
-FROM scratch
-ARG EnvironmentStage
-COPY --from=base / /
-WORKDIR /Workspace
-USER user
 ENTRYPOINT ["/Workspace/userhome/EntryPointScript.sh"]
