@@ -5,7 +5,7 @@ services:
     ports:
       - 80:80
   gryvatorproxy:
-    image: gryvatorproxy:0.1.2
+    image: gryvatorproxy:0.1.9
     container_name: 'gryvatorproxy'
     volumes:
       - ./Volumes/Keys:/var/lib/tor/hiddenservicename
