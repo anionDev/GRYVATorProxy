@@ -2,6 +2,9 @@
 
 configurationfile="/Workspace/Application/torrc"
 
+chmod 700 "/var/lib/tor/$hiddenservicedir"
+chmod -r 600 "/var/lib/tor/$hiddenservicedir/"
+
 sed -i -e "s/__.torrc.hiddenservicedir.__/$hiddenservicedir/g" $configurationfile
 sed -i -e "s/__.torrc.hiddenserviceport.__/$hiddenserviceport/g" $configurationfile
 sed -i -e "s/__.torrc.hiddenserviceaddress.__/$hiddenserviceaddress/g" $configurationfile

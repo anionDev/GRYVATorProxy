@@ -26,4 +26,7 @@ RUN apt-get -y update \
 
 WORKDIR /Workspace/Data
 
-ENTRYPOINT ["/Workspace/userhome/EntryPointScript.sh"]
+COPY ./GRYVATorProxy/torrc.template /Workspace/Application/torrc
+COPY ./GRYVATorProxy/EntryPoint.sh /Workspace/Application/EntryPoint.sh
+
+ENTRYPOINT ["/Workspace/Application/EntryPoint.sh"]

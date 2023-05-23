@@ -1,4 +1,4 @@
-HiddenServiceDir __.torrc.hiddenservicedir.__
+HiddenServiceDir /var/lib/tor/__.torrc.hiddenservicedir.__
 HiddenServicePort __.torrc.hiddenserviceport.__ __.torrc.hiddenserviceaddress.__
 __.torrc.lognotice.__
 __.torrc.logdebug.__
