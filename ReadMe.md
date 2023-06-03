@@ -4,8 +4,6 @@
 
 [GRYVATorProxy](https://github.com/anionDev/GRYVATorProxy) is a docker-image for running a hidden service in a docker-container.
 
-The Tor-version in the latest image is v0.4.7.10.
-
 ## Usage
 
 ### Volumes
