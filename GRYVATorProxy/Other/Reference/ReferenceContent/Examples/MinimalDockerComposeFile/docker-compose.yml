@@ -20,7 +20,7 @@ services:
     environment:
       - hiddenservicedir=hiddenservicename
       - hiddenserviceport=8080
-      - hiddenserviceaddress=localhost:80
+      - hiddenserviceaddress=gryvatorproxy_webserver:80
       - lognotice=true
       - logdebug=false
     networks:
