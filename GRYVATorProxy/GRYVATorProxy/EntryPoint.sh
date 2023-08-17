@@ -15,7 +15,7 @@ else
   sed -i -e "s/__.torrc.lognotice.__//g" $configurationfile
 fi
 if [[ "${logdebug}" = true ]]; then
-  sed -i -e "s/__.torrc.logdebug.__/Log notice file \/var\/log\/tor\/debug.log/g" $configurationfile
+  sed -i -e "s/__.torrc.logdebug.__/Log debug file \/var\/log\/tor\/debug.log/g" $configurationfile
 else
   sed -i -e "s/__.torrc.logdebug.__//g" $configurationfile
 fi
