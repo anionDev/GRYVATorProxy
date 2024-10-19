@@ -6,7 +6,7 @@ from ScriptCollection.TasksForCommonProjectStructure import TasksForCommonProjec
 def update_dependencies():
     script_file = str(Path(__file__).absolute())
     sc = ScriptCollectionCore()
-    debian_version = sc.get_docker_debian_version("stable-slim")
+    debian_version = sc.get_docker_debian_version("stable")
     TasksForCommonProjectStructure().update_dependency_in_resources_folder(script_file, "Tor", sc.get_latest_tor_version_of_debian_repository(debian_version))
 
 
