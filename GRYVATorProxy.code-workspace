@@ -1,96 +1,45 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"path": ".",
+			"name": "Entire repository"
 		}
 	],
 	"tasks": {
 		"version": "2.0.0",
 		"tasks": [
 			{
-				"label": "GRYVATorProxy: Build entire codeunit",
-				"command": "SCBuildCodeunit",
-				"args": [
-					"${workspaceFolder}/GRYVATorProxy"
-				],
+				"label": "Base: Build all codeunits",
+				"command": "scbuildcodeunits",
 				"type": "shell",
-			},
-			{
-				"label": "GRYVATorProxy: Common tasks",
-				"command": "python",
-				"args": [
-					"${workspaceFolder}/GRYVATorProxy/Other/CommonTasks.py"
-				],
-				"type": "shell",
-			},
-			{
-				"label": "GRYVATorProxy: Build",
-				"command": "python",
-				"args": [
-					"${workspaceFolder}/GRYVATorProxy/Other/Build/Build.py"
-				],
-				"type": "shell",
-			},
-			{
-				"label": "GRYVATorProxy: Run testcases",
-				"command": "python",
-				"args": [
-					"${workspaceFolder}/GRYVATorProxy/Other/QualityCheck/RunTestcases.py"
-				],
-				"type": "shell",
-			},
-			{
-				"label": "GRYVATorProxy: Linting",
-				"command": "python",
-				"args": [
-					"${workspaceFolder}/GRYVATorProxy/Other/QualityCheck/Linting.py"
-				],
-				"type": "shell",
-			},
-			{
-				"label": "GRYVATorProxy: Generate reference",
-				"command": "python",
-				"args": [
-					"${workspaceFolder}/GRYVATorProxy/Other/Reference/GenerateReference.py"
-				],
-				"type": "shell",
-			},
-			{
-				"label": "GRYVATorProxy: Run example",
-				"command": "docker-compose",
-				"args": [
-					"${workspaceFolder}/GRYVATorProxy/Other/Reference/ReferenceContent/Examples",
-					"--file",
-					"docker-compose.example.yml",
-					"up",
-					"--build"
-				],
-				"type": "shell",
+				"options": {
+					"cwd": "${workspaceFolder}"
+				},
+				"aliases": [
+					"bb"
+				]
 			}
 		]
 	},
 	"settings": {
-		"files.associations": {
-			"*.codeunit": "xml",
-		},
 		"files.exclude": {},
 		"spellright.language": [
-			"en",
+			"en"
 		],
 		"spellright.documentTypes": [
 			"markdown",
-			"plaintext",
-		],
+			"plaintext"
+		]
 	},
 	"launch": {
 		"configurations": [
 			{
 				"name": "All: Debug current file",
-				"type": "python",
+				"type": "debugpy",
 				"request": "launch",
 				"program": "${file}",
 				"console": "integratedTerminal"
-			},
+			}
 		]
 	}
 }
