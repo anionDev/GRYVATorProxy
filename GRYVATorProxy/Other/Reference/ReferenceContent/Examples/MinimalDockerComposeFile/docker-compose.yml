@@ -8,7 +8,7 @@ services:
       - network
 
   gryvatorproxy:
-    image: gryvatorproxy:0.1.17
+    image: gryvatorproxy:0.1.18
     container_name: 'gryvatorproxy'
     depends_on:
       - gryvatorproxy_webserver
